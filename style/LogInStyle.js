@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     },
     icon: {
         position: 'absolute',
-        top: 25,
+        top: 30,
         right: 10,
     },
     btn: {

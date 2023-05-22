@@ -1,10 +1,12 @@
 import { Text, View, Image, TextInput, TouchableOpacity, Alert } from 'react-native';
-import React from 'react';
-import Icon from 'react-native-vector-icons/Entypo';
-import Feather from 'react-native-vector-icons/Feather';
+import React, { useState } from 'react';
+import Icon from 'react-native-vector-icons/Feather';
 import styles from '../style/LogInStyle';
 
 const LogInScreens = ({ navigation }) => {
+
+    const [showPassword, setShowPassword] = useState(false)
+
     return (
         <View style={styles.container}>
             {/* name of app */}
@@ -19,9 +21,9 @@ const LogInScreens = ({ navigation }) => {
                 {/* Form input */}
                 <TextInput style={styles.formInput} placeholder='Tên đăng nhập' />
                 <View style={{ flexDirection: 'row' }}>
-                    <TextInput style={[styles.formInput, { marginTop: 20 }]} placeholder='Mật khẩu' secureTextEntry />
-                    <TouchableOpacity>
-                        <Icon name='eye' size={35} style={styles.icon} />
+                    <TextInput style={[styles.formInput, { marginTop: 20 }]} placeholder='Mật khẩu' secureTextEntry={!showPassword} />
+                    <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                        <Icon name={showPassword ? 'eye' : 'eye-off'} size={30} style={styles.icon} />
                     </TouchableOpacity>
                 </View>
 
@@ -48,7 +50,7 @@ const LogInScreens = ({ navigation }) => {
                 'Please call:',
                 '(+84).. ... ..',
             )}>
-                <Feather name='phone-call' size={40} style={styles.iconPhone} />
+                <Icon name='phone-call' size={40} style={styles.iconPhone} />
             </TouchableOpacity>
         </View>
     )
