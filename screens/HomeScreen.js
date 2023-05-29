@@ -2,8 +2,10 @@ import { Text, StyleSheet, View, ScrollView, Image, TouchableOpacity } from 'rea
 import React from 'react';
 import Icon from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const HomeScreen = () => {
+
+const HomeScreen = ({ navigation }) => {
 
     return (
         <ScrollView>
@@ -22,6 +24,14 @@ const HomeScreen = () => {
                         </View>
                     </View>
                 </View>
+
+                <View style={{ flexDirection: 'row', marginTop: 125, marginLeft: '-75%' }}>
+                    <MaterialCommunityIcons name='crown-outline' size={25} />
+                    <View style={styles.progress}></View>
+                    <MaterialCommunityIcons name='crown-outline' size={25} />
+                </View>
+
+                <Image source={require('../assets/barcode.jpg')} style={styles.barcode} />
             </View>
 
             <View style={styles.options}>
@@ -80,11 +90,11 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: '#EEA47F',
         width: '100%',
-        height: 200,
+        height: 400,
         borderBottomLeftRadius: 80,
         borderBottomRightRadius: 80,
         flexDirection: 'row',
-        alignItems: 'center'
+        paddingTop: 15,
     },
     avatar: {
         height: 100,
@@ -145,5 +155,22 @@ const styles = StyleSheet.create({
         height: 250,
         marginTop: 15,
         marginRight: 30
-    }
+    },
+    barcode: {
+        height: 150,
+        width: '80%',
+        position: 'absolute',
+        bottom: 50,
+        left: 50,
+        borderRadius: 25
+    },
+    progress: {
+        borderWidth: 1,
+        borderRadius: 100,
+        height: 15,
+        width: '55%',
+        marginHorizontal: 5,
+        marginTop: 7
+    },
+
 })
